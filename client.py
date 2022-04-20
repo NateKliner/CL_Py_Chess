@@ -25,16 +25,32 @@ print(boardTemp)
 
 while True:
     #msg = "hello sir"
-    try:
-        for msg in sys.stdin:
-            s.sendto(msg.encode(), ip)
-            break
+    clientTurn = True
+    while clientTurn:
+        print("\nYour Turn:")
+        try:
+            for msg in sys.stdin:
+                s.sendto(msg.encode(), ip)
+                break
+            print("waiting")
+            data, server = s.recvfrom(1024)
+            if data.decode() != "Illegal move":
+                #board state changed
+                clientTurn = False
+                board = chess.Board(data.decode())
+                print(board)
+                print("_______________NEXT BOARD_______________")
+            
+        except Exception as e:
+            print(e)
+
+    #server Turn
+    serverTurn = True
+    while serverTurn:
         print("waiting")
         data, server = s.recvfrom(1024)
+        serverTurn = False
         board = chess.Board(data.decode())
         print(board)
         print("_______________NEXT BOARD_______________")
         
-    except Exception as e:
-        print(e)
-    time.sleep(1)

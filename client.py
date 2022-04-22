@@ -22,7 +22,7 @@ print("  ---------------")
 print("  a b c d e f g h\n")
 print("Game Start, you are upper-case!\n")
 print(boardTemp)
-
+turnNumber = 0
 while True:
     #msg = "hello sir"
     clientTurn = True
@@ -39,7 +39,7 @@ while True:
                 clientTurn = False
                 board = chess.Board(data.decode())
                 print(board)
-                print("_______________NEXT BOARD_______________")
+                print("_______Black's Move_______")
             
         except Exception as e:
             print(e)
@@ -52,5 +52,5 @@ while True:
         serverTurn = False
         board = chess.Board(data.decode())
         print(board)
-        print("_______________NEXT BOARD_______________")
+        print("______Move Number: " + str(turnNumber) + "______")
         

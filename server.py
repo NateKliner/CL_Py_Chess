@@ -21,7 +21,7 @@ print("  ---------------")
 print("  a b c d e f g h\n")
 print("Game Start, you are lower-case!\n")
 print(board)
-
+turnNumber = 0
 while True:
 
     clientTurn = True
@@ -44,7 +44,7 @@ while True:
                 else:
                     sent = s.sendto(board.epd().encode(), address)
                     print(board)
-                    print("_______________NEXT BOARD_______________")
+                    print("_______White's Move_______")
             else:
                 sent = s.sendto("Illegal move".encode(), address)
         except:
@@ -69,7 +69,7 @@ while True:
                     else:
                         sent = s.sendto(board.epd().encode(), address)
                         print(board)
-                        print("_______________NEXT BOARD_______________")
+                        print("______Move Number: " + str(turnNumber) + "______")
                 else:
                     print("Illegal move")
             except Exception as e:

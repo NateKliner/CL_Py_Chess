@@ -23,7 +23,7 @@ print("Game Start, you are lower-case!\n")
 print(board)
 turnNumber = 0
 while True:
-
+    turnNumber += 1
     clientTurn = True
     while clientTurn:
         #conn, address = s.accept()
